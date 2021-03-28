@@ -25,7 +25,6 @@ class SessionStore: ObservableObject {
                     (document, error) in
                     if let dict = document?.data() {
                         guard let decodeduser = try? User.init(fromDictionary: dict) else {return}
-                        print(decodeduser)
                         self.session = decodeduser
                     }
                 }

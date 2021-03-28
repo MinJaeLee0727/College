@@ -89,7 +89,8 @@ struct Constants {
 
     }
     
-    struct DefaultBoards {
-        static let defaultBoardList = ["FRESHMAN", "FREE-BOARD", "SCHOOL MARKET", "STUDY", ""]
+    struct boards {
+        // motherBoard: [board]
+        static let boards = ["Free-Posting" : ["Freshman Board", "Graduate Board", "Open Board", "Undergraduate Board"]]
     }
 }

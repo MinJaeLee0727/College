@@ -66,7 +66,7 @@ struct LoginView: View {
                 VStack {
                     Text("Login")
                         .font(.largeTitle)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .fontWeight(.heavy)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.top, 25)
@@ -103,7 +103,7 @@ struct LoginView: View {
                             
                             Image(systemName: "arrow.right")
                         }
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .padding(.vertical, 10)
                         .padding(.horizontal)
                         .cornerRadius(8)
@@ -127,7 +127,7 @@ struct LoginView: View {
                                 
                                 Image(systemName: "arrow.right")
                             }
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                             .padding(.vertical, 10)
                             .padding(.horizontal)
                             .cornerRadius(8)
@@ -138,7 +138,7 @@ struct LoginView: View {
                     Button(action: {}, label: {
                         
                         Text("Can't sign up?")
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                             .padding(.vertical, 10)
                             .padding(.horizontal)
                             .cornerRadius(8)
@@ -160,5 +160,6 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
+            .preferredColorScheme(.dark)
     }
 }

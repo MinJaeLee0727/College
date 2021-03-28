@@ -10,6 +10,7 @@ target 'college (iOS)' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Analytics'
   pod 'Firebase/Storage'
+  pod 'SDWebImage'
 end
 
 target 'college (macOS)' do

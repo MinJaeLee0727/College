@@ -16,6 +16,10 @@ struct ProfileView: View {
             Button(action: session.logout) {
                 Text("Log Out")
             }
+            
+            Text(session.session!.school)
+            
+            Text(session.session!.email)
         }
     }
 }

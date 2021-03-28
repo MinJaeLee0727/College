@@ -7,10 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		533F216E2603F984000E97F9 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533F216D2603F984000E97F9 /* DatabaseService.swift */; };
-		533F216F2603F984000E97F9 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533F216D2603F984000E97F9 /* DatabaseService.swift */; };
 		5358BCA425F0357100F203BC /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358BCA325F0357100F203BC /* SessionStore.swift */; };
 		5358BCA525F0357100F203BC /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358BCA325F0357100F203BC /* SessionStore.swift */; };
+		535D7739260FF116008E8BC7 /* PostCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D7738260FF116008E8BC7 /* PostCardService.swift */; };
+		535D773A260FF116008E8BC7 /* PostCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D7738260FF116008E8BC7 /* PostCardService.swift */; };
+		535D775F2611026D008E8BC7 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D775E2611026D008E8BC7 /* PostView.swift */; };
+		535D77602611026D008E8BC7 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D775E2611026D008E8BC7 /* PostView.swift */; };
+		535D776A26110799008E8BC7 /* MyPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D776926110799008E8BC7 /* MyPostView.swift */; };
+		535D776B26110799008E8BC7 /* MyPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D776926110799008E8BC7 /* MyPostView.swift */; };
+		535D77752611093B008E8BC7 /* ProfileSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D77742611093B008E8BC7 /* ProfileSevice.swift */; };
+		535D77762611093B008E8BC7 /* ProfileSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D77742611093B008E8BC7 /* ProfileSevice.swift */; };
+		535D777C26110B1F008E8BC7 /* schoolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D777B26110B1F008E8BC7 /* schoolModel.swift */; };
+		535D777D26110B1F008E8BC7 /* schoolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D777B26110B1F008E8BC7 /* schoolModel.swift */; };
 		5360F16F2606739F0038B8D2 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5360F16E2606739F0038B8D2 /* NotificationsView.swift */; };
 		5360F1702606739F0038B8D2 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5360F16E2606739F0038B8D2 /* NotificationsView.swift */; };
 		5360F182260677CF0038B8D2 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5360F181260677CF0038B8D2 /* PostService.swift */; };
@@ -29,12 +37,16 @@
 		536A0F3D25E122720014FD36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 536A0F1125E122720014FD36 /* Assets.xcassets */; };
 		536A0F5C25E1288C0014FD36 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A0F5B25E1288C0014FD36 /* HomeView.swift */; };
 		536A0F5D25E1288C0014FD36 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A0F5B25E1288C0014FD36 /* HomeView.swift */; };
-		536A0F6325E128960014FD36 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A0F6225E128960014FD36 /* BoardView.swift */; };
-		536A0F6425E128960014FD36 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A0F6225E128960014FD36 /* BoardView.swift */; };
+		536A0F6325E128960014FD36 /* BoardMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A0F6225E128960014FD36 /* BoardMainView.swift */; };
+		536A0F6425E128960014FD36 /* BoardMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A0F6225E128960014FD36 /* BoardMainView.swift */; };
 		536A0F7525E1332E0014FD36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 536A0F7425E1332E0014FD36 /* GoogleService-Info.plist */; };
 		536A0F7625E1332E0014FD36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 536A0F7425E1332E0014FD36 /* GoogleService-Info.plist */; };
 		536A0FD225E142ED0014FD36 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A0FD125E142ED0014FD36 /* MainView.swift */; };
 		536A0FD325E142ED0014FD36 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A0FD125E142ED0014FD36 /* MainView.swift */; };
+		5383605E260B37F400EEDA3C /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5383605D260B37F400EEDA3C /* BoardView.swift */; };
+		5383605F260B37F400EEDA3C /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5383605D260B37F400EEDA3C /* BoardView.swift */; };
+		5383606D260B403900EEDA3C /* motherBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5383606C260B403900EEDA3C /* motherBoardModel.swift */; };
+		5383606E260B403900EEDA3C /* motherBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5383606C260B403900EEDA3C /* motherBoardModel.swift */; };
 		53C8565C25E16C88008EF8BB /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C8565B25E16C88008EF8BB /* Register.swift */; };
 		53C8565D25E16C88008EF8BB /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C8565B25E16C88008EF8BB /* Register.swift */; };
 		53C856AB25E224AA008EF8BB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C856AA25E224AA008EF8BB /* LoginView.swift */; };
@@ -80,8 +92,12 @@
 
 /* Begin PBXFileReference section */
 		0D679FB0BF79D9F4A1D3DFD6 /* Pods-college (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-college (iOS).release.xcconfig"; path = "Target Support Files/Pods-college (iOS)/Pods-college (iOS).release.xcconfig"; sourceTree = "<group>"; };
-		533F216D2603F984000E97F9 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		5358BCA325F0357100F203BC /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		535D7738260FF116008E8BC7 /* PostCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardService.swift; sourceTree = "<group>"; };
+		535D775E2611026D008E8BC7 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		535D776926110799008E8BC7 /* MyPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostView.swift; sourceTree = "<group>"; };
+		535D77742611093B008E8BC7 /* ProfileSevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSevice.swift; sourceTree = "<group>"; };
+		535D777B26110B1F008E8BC7 /* schoolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = schoolModel.swift; sourceTree = "<group>"; };
 		5360F16E2606739F0038B8D2 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		5360F181260677CF0038B8D2 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		5360F18C26067CA50038B8D2 /* UploadPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPost.swift; sourceTree = "<group>"; };
@@ -101,9 +117,11 @@
 		536A0F3525E122720014FD36 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		536A0F3725E122720014FD36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		536A0F5B25E1288C0014FD36 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		536A0F6225E128960014FD36 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		536A0F6225E128960014FD36 /* BoardMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardMainView.swift; sourceTree = "<group>"; };
 		536A0F7425E1332E0014FD36 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		536A0FD125E142ED0014FD36 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5383605D260B37F400EEDA3C /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		5383606C260B403900EEDA3C /* motherBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = motherBoardModel.swift; sourceTree = "<group>"; };
 		53C8565B25E16C88008EF8BB /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		53C856AA25E224AA008EF8BB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		53C856B125E25274008EF8BB /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -250,7 +268,10 @@
 				536A0F5B25E1288C0014FD36 /* HomeView.swift */,
 				53F9680E260405610064904F /* ProfileView.swift */,
 				5360F18C26067CA50038B8D2 /* UploadPost.swift */,
-				536A0F6225E128960014FD36 /* BoardView.swift */,
+				536A0F6225E128960014FD36 /* BoardMainView.swift */,
+				5383605D260B37F400EEDA3C /* BoardView.swift */,
+				535D775E2611026D008E8BC7 /* PostView.swift */,
+				535D776926110799008E8BC7 /* MyPostView.swift */,
 				5360F16E2606739F0038B8D2 /* NotificationsView.swift */,
 				53C856AA25E224AA008EF8BB /* LoginView.swift */,
 				53C8565B25E16C88008EF8BB /* Register.swift */,
@@ -263,8 +284,10 @@
 			isa = PBXGroup;
 			children = (
 				53CFB51A25F01966009EADB1 /* userModel.swift */,
-				53F9681926040A770064904F /* postModel.swift */,
+				535D777B26110B1F008E8BC7 /* schoolModel.swift */,
+				5383606C260B403900EEDA3C /* motherBoardModel.swift */,
 				53C862AA2609DD1300ECFCC2 /* boardModel.swift */,
+				53F9681926040A770064904F /* postModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -282,10 +305,11 @@
 			isa = PBXGroup;
 			children = (
 				53CFB52E25F01CBA009EADB1 /* AuthService.swift */,
-				533F216D2603F984000E97F9 /* DatabaseService.swift */,
 				5360F181260677CF0038B8D2 /* PostService.swift */,
+				535D7738260FF116008E8BC7 /* PostCardService.swift */,
 				53CFB53D25F01CCE009EADB1 /* StorageService.swift */,
 				5358BCA325F0357100F203BC /* SessionStore.swift */,
+				535D77742611093B008E8BC7 /* ProfileSevice.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -528,20 +552,26 @@
 				53C8565C25E16C88008EF8BB /* Register.swift in Sources */,
 				536A0FD225E142ED0014FD36 /* MainView.swift in Sources */,
 				53F9681A26040A770064904F /* postModel.swift in Sources */,
+				5383605E260B37F400EEDA3C /* BoardView.swift in Sources */,
 				5360F19C26068FC80038B8D2 /* ImagePicker.swift in Sources */,
 				53C856B225E25274008EF8BB /* Constant.swift in Sources */,
 				53CFB51025ED772F009EADB1 /* LoadingView.swift in Sources */,
+				535D77752611093B008E8BC7 /* ProfileSevice.swift in Sources */,
 				536A0F5C25E1288C0014FD36 /* HomeView.swift in Sources */,
+				535D775F2611026D008E8BC7 /* PostView.swift in Sources */,
 				536A0F3A25E122720014FD36 /* ContentView.swift in Sources */,
-				533F216E2603F984000E97F9 /* DatabaseService.swift in Sources */,
-				536A0F6325E128960014FD36 /* BoardView.swift in Sources */,
+				536A0F6325E128960014FD36 /* BoardMainView.swift in Sources */,
 				53F9680F260405610064904F /* ProfileView.swift in Sources */,
+				535D777C26110B1F008E8BC7 /* schoolModel.swift in Sources */,
 				5360F18D26067CA50038B8D2 /* UploadPost.swift in Sources */,
 				53C862AB2609DD1300ECFCC2 /* boardModel.swift in Sources */,
+				535D7739260FF116008E8BC7 /* PostCardService.swift in Sources */,
 				53CFB52725F01A3F009EADB1 /* Extensions.swift in Sources */,
 				536A0F3825E122720014FD36 /* collegeApp.swift in Sources */,
 				53CFB52F25F01CBA009EADB1 /* AuthService.swift in Sources */,
 				5358BCA425F0357100F203BC /* SessionStore.swift in Sources */,
+				5383606D260B403900EEDA3C /* motherBoardModel.swift in Sources */,
+				535D776A26110799008E8BC7 /* MyPostView.swift in Sources */,
 				5360F182260677CF0038B8D2 /* PostService.swift in Sources */,
 				53CFB51B25F01966009EADB1 /* userModel.swift in Sources */,
 				53C856AB25E224AA008EF8BB /* LoginView.swift in Sources */,
@@ -557,20 +587,26 @@
 				53C8565D25E16C88008EF8BB /* Register.swift in Sources */,
 				536A0FD325E142ED0014FD36 /* MainView.swift in Sources */,
 				53F9681B26040A770064904F /* postModel.swift in Sources */,
+				5383605F260B37F400EEDA3C /* BoardView.swift in Sources */,
 				5360F19D26068FC80038B8D2 /* ImagePicker.swift in Sources */,
 				53C856B325E25274008EF8BB /* Constant.swift in Sources */,
 				53CFB51125ED772F009EADB1 /* LoadingView.swift in Sources */,
+				535D77762611093B008E8BC7 /* ProfileSevice.swift in Sources */,
 				536A0F5D25E1288C0014FD36 /* HomeView.swift in Sources */,
+				535D77602611026D008E8BC7 /* PostView.swift in Sources */,
 				536A0F3B25E122720014FD36 /* ContentView.swift in Sources */,
-				533F216F2603F984000E97F9 /* DatabaseService.swift in Sources */,
-				536A0F6425E128960014FD36 /* BoardView.swift in Sources */,
+				536A0F6425E128960014FD36 /* BoardMainView.swift in Sources */,
 				53F96810260405610064904F /* ProfileView.swift in Sources */,
+				535D777D26110B1F008E8BC7 /* schoolModel.swift in Sources */,
 				5360F18E26067CA50038B8D2 /* UploadPost.swift in Sources */,
 				53C862AC2609DD1300ECFCC2 /* boardModel.swift in Sources */,
+				535D773A260FF116008E8BC7 /* PostCardService.swift in Sources */,
 				53CFB52825F01A3F009EADB1 /* Extensions.swift in Sources */,
 				536A0F3925E122720014FD36 /* collegeApp.swift in Sources */,
 				53CFB53025F01CBA009EADB1 /* AuthService.swift in Sources */,
 				5358BCA525F0357100F203BC /* SessionStore.swift in Sources */,
+				5383606E260B403900EEDA3C /* motherBoardModel.swift in Sources */,
+				535D776B26110799008E8BC7 /* MyPostView.swift in Sources */,
 				5360F183260677CF0038B8D2 /* PostService.swift in Sources */,
 				53CFB51C25F01966009EADB1 /* userModel.swift in Sources */,
 				53C856AC25E224AA008EF8BB /* LoginView.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainView: View {    
+struct MainView: View {
     @State var selected = 0
 
     init() {
@@ -21,7 +21,7 @@ struct MainView: View {
                 Image(systemName: "house")
             }).tag(0)
             
-            BoardView().tabItem({
+            BoardMainView().tabItem({
                 Image(systemName: "newspaper")
             }).tag(1)
             

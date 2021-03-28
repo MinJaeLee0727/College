@@ -9,79 +9,69 @@ import SwiftUI
 
 struct Register: View {
     var body: some View {
-        //        NavigationView {
-        //            VStack {
-        //                Spacer(minLength: 0)
-        //
-        //                HStack(spacing: 20) {
-        //                    NavigationLink(
-        //                        destination: RegisterCollege(),
-        //                        label: {
-        //                            Text("College Student")
-        //                                .font(.title2)
-        //                                .foregroundColor(.white)
-        //                                .frame(width: UIScreen.main.bounds.width/2.3, height: UIScreen.main.bounds.width/2.3)
-        //                                .background(Color(Constants.CollegeColor.CollegeRepresentColor!))
-        //                                .cornerRadius(300)
-        //                        })
-        //
-        //
-        //                    NavigationLink(
-        //                        destination: RegisterHighSchoolStudent(),
-        //                        label: {
-        //                            Text("High School Student")
-        //                                .font(.title2)
-        //                                .foregroundColor(.white)
-        //                                .frame(width: UIScreen.main.bounds.width/2.5, height: UIScreen.main.bounds.width/2.5)
-        //                                .background(Color.blue)
-        //                                .cornerRadius(300)
-        //                        })
-        //                }
-        //                .padding(.bottom)
-        //
-        //                HStack(spacing: 20) {
-        //                    NavigationLink(
-        //                        destination: RegisterEmployee(),
-        //                        label: {
-        //                            Text("Faculty / Staff")
-        //                                .font(.title2)
-        //                                .foregroundColor(.white)
-        //                                .frame(width: UIScreen.main.bounds.width/2.5, height: UIScreen.main.bounds.width/2.5)
-        //                                .background(Color.red)
-        //                                .cornerRadius(300)
-        //                        })
-        //
-        //                    NavigationLink(
-        //                        destination: RegisterHighSchoolStudent(),
-        //                        label: {
-        //                            Text("Visitors")
-        //                                .font(.title2)
-        //                                .foregroundColor(.white)
-        //                                .frame(width: UIScreen.main.bounds.width/2.7, height: UIScreen.main.bounds.width/2.7)
-        //                                .background(Color.black)
-        //                                .cornerRadius(300)
-        //                        })
-        //                }
-        //
-        //                Spacer(minLength: 0)
-        //
-        //            }
-        //            .padding(.horizontal)
-        //            .navigationTitle("Who Are You?")
-        //
-        //        }
-        
-        RegisterCollege()
+        RegisterWithSchoolEmail()
     }
 }
 
-struct RegisterCollege: View {
+//struct detailRegisterWithSchoolEmail: View {
+//    let color = Color(UIColor(named: "CollegeStudentRepresentColor")!)
+//
+//    @State private var schoolIndex: Int = 0
+//
+//    var body: some View {
+//        VStack(spacing: 30) {
+//            HStack(spacing: 15) {
+//                Image(systemName: "graduationcap.fill")
+//                    .foregroundColor(color)
+//                    .frame(width: 30, height: 30)
+//
+//                Picker("Please Choose Your School", selection: $schoolIndex) {
+//                    ForEach(0 ..< Constants.SchoolInformation.UniversityList.count) {
+//                        Text(Constants.SchoolInformation.UniversityList[$0]["Name"]!)
+//                    }
+//                }
+//
+//            }
+//            .padding(.horizontal, 12)
+//            .background(Color.white)
+//            .cornerRadius(8)
+//
+//            HStack {
+//            }
+//
+//            HStack {
+//
+//            }
+//
+//            NavigationLink(
+//                destination: RegisterWithSchoolEmail(schoolIndex: $schoolIndex)) {
+//                HStack {
+//                Spacer()
+//
+//                Text("Next")
+//
+//                Spacer()
+//
+//                Image(systemName: "arrow.right")
+//                }
+//                .foregroundColor(.primary)
+//            }
+//
+//            Spacer()
+//        }
+//        .navigationBarTitle("Information that only we know")
+//        .navigationBarTitleDisplayMode(.inline)
+//
+//    }
+//}
+
+struct RegisterWithSchoolEmail: View {
     //    @State private var firstName: String = ""
     //    @State private var lastName: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var rePassword: String = ""
-    @State private var schoolIndex: Int = 0
+    @State var schoolIndex: Int = 0
     @State private var showingAlert = false
     @State private var alertTitle: String = "Oops!"
     @State private var errorMsg: String = "Something Happened"
@@ -91,7 +81,6 @@ struct RegisterCollege: View {
     let color = Color(UIColor(named: "CollegeStudentRepresentColor")!)
     
     func clear() {
-        print(email)
         self.email = ""
         self.password = ""
         self.schoolIndex = 0
@@ -159,22 +148,19 @@ struct RegisterCollege: View {
                 //            .background(Color.white)
                 //            .cornerRadius(8)
                 //
-                HStack(spacing: 15) {
-                    Image(systemName: "graduationcap.fill")
-                        .foregroundColor(color)
-                        .frame(width: 30, height: 30)
-                    
-                    Picker("Please Choose Your School", selection: $schoolIndex) {
-                        ForEach(0 ..< Constants.SchoolInformation.UniversityList.count) {
-                            Text(Constants.SchoolInformation.UniversityList[$0]["Name"]!)
-                        }
-                    }
-                    
-                }
-                .padding(.horizontal, 12)
-                .background(Color.white)
-                .cornerRadius(8)
                 
+                            HStack(spacing: 15) {
+                                Image(systemName: "graduationcap.fill")
+                                    .foregroundColor(color)
+                                    .frame(width: 30, height: 30)
+                
+                                Picker("Please Choose Your School", selection: $schoolIndex) {
+                                    ForEach(0 ..< Constants.SchoolInformation.UniversityList.count) {
+                                        Text(Constants.SchoolInformation.UniversityList[$0]["Name"]!)
+                                    }
+                                }
+                
+                            }
                 
                 VStack{
                     HStack(spacing: 15) {
@@ -244,19 +230,19 @@ struct RegisterCollege: View {
                 Spacer()
             }
             .padding(.top)
-            .navigationBarTitle("Information that only we know")
-            .navigationBarTitleDisplayMode(.inline)
             
             if self.isLoading {
                 LoadingView()
             }
         }
+        .navigationTitle("Information that only we know")
+        .navigationBarTitleDisplayMode(.inline)
         
         
     }
 }
 
-struct RegisterHighSchoolStudent: View {
+struct RegisterWithOutSchoolEmail: View {
     var body: some View {
         Text("High School Student")
     }
@@ -264,6 +250,6 @@ struct RegisterHighSchoolStudent: View {
 
 struct Register_Previews: PreviewProvider {
     static var previews: some View {
-        Register()
+        LoginView()
     }
 }

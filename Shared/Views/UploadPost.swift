@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct UploadPost: View {
+//    @EnvironmentObject var session: SessionStore
+    
     let contentPlaceHolder: String = "Content (optional)"
 
     @State private var postImage: Image?
@@ -49,19 +51,20 @@ struct UploadPost: View {
         
         self.isLoading = true
         
-        PostService.uploadPostWithImage(title: title, content: content, imageData: imageData, onSuccess: {
-            self.isLoading = false
-            self.error = "Successfuly uploaded it!"
-            self.showingAlert = true
-            self.clear()
-        }) {
-            (errorMessage) in
-            self.isLoading = false
-            self.error = errorMessage
-            self.showingAlert = true
-            return
-             
-        }
+//        PostService.uploadPostWithImage(school: "University of Waterloo", motherBoard: <#T##String#>, board: <#T##String#>, title: <#T##String#>, content: <#T##String#>, imageData: <#T##Data#>, onSuccess: <#T##() -> Void#>, onError: <#T##(String) -> Void#>)
+//        PostService.uploadPostWithImage(user: self.session.session!, title: title, content: content, imageData: imageData, onSuccess: {
+//            self.isLoading = false
+//            self.error = "Successfuly uploaded it!"
+//            self.showingAlert = true
+//            self.clear()
+//        }) {
+//            (errorMessage) in
+//            self.isLoading = false
+//            self.error = errorMessage
+//            self.showingAlert = true
+//            return
+//
+//        }
         
         self.clear()
     }

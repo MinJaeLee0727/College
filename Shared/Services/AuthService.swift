@@ -14,12 +14,12 @@ import FirebaseFirestore
 class AuthService {
     static var storeRoot = Firestore.firestore()
     
-//    static func getUserInfo(userId: String) -> DocumentReference {
-//        let userInfo = try? QueryDocumentSnapshot.data(as: )
-//    }
-//    
     static func getUserId(userId: String) -> DocumentReference {
         return storeRoot.collection("users").document(userId)
+    }
+    
+    static func getUserIdInSchool(school: String, userId: String) -> DocumentReference {
+        return storeRoot.collection("Universities").document(school).collection("users").document(userId)
     }
     
     static func signUp(email: String, school: String, schoolIndex: Int, password: String, onSuccess: @escaping (_ user: User) -> Void, onError: @escaping (_ errorMessage: String) -> Void) {
@@ -43,6 +43,7 @@ class AuthService {
                 guard let userId = authResult?.user.uid else {return}
                 
                 let firestoreUserId = getUserId(userId: userId)
+                let firestoreUserIdInSchool = getUserIdInSchool(school: school, userId: userId)
                 let user = User.init(uid: userId, email: email, school: school, schoolIndex: schoolIndex)
                 
                 guard let dict = try?user.asDictionary() else {return}
@@ -54,7 +55,15 @@ class AuthService {
                         return
                     }
                     
-                    onSuccess(user)
+                    firestoreUserIdInSchool.setData(dict) {
+                        (error) in
+                        if error != nil {
+                            onError(error!.localizedDescription)
+                            return
+                        }
+                        
+                        onSuccess(user)
+                    }
                 }
                 
             })

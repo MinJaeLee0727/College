@@ -8,15 +8,22 @@
 import Foundation
 import FirebaseFirestore
 
-struct PostModel: Encodable, Decodable {
+struct postModel: Encodable, Decodable {
+    
+    var school: String
+    var motherBoard: String
+    var board: String
     
     var posterId: String
     var postId: String
+    var date: Double
+    
     var title: String
     var content: String
-    var likes: [String: Bool]
     var mediaUrl: String
-    var date: Double
+    
+    var likes: [String: Int] // userId: {-1: disliked / 0: -- / 1: liked}
+//    var dislikes: [String: Bool]
     var likeCount: Int
     var dislikeCount: Int
 }

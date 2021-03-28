@@ -8,8 +8,15 @@
 import Foundation
 import FirebaseFirestore
 
-//struct BoardModel: Encodable, Decodable {
-//    
-//    var
-//    
-//}
+struct boardModel: Encodable, Decodable {
+
+    var name: String
+    
+    var school: String
+    var motherBoard: String
+    
+    var priority: Int
+    var count: Int
+    var countHotPosts: Int
+    var userDefined: Bool
+}

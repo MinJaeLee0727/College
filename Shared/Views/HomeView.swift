@@ -10,13 +10,16 @@ import FirebaseAuth
 
 struct HomeView: View {
     
+    @EnvironmentObject var session: SessionStore
+    
     var body: some View {
         NavigationView {
             VStack {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("College")
-                        Text("University of Waterloo")
+                        Text(session.session!.school)
+//                        Text("University of Waterloo")
                     }
                         
                     Spacer()
@@ -59,9 +62,11 @@ struct HomeView: View {
     }
 }
 
+#if DEBUG
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView().environmentObject(SessionStore())
     }
 }
+#endif
 
