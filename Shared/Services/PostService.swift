@@ -78,8 +78,28 @@ class PostService {
 //        }
 //    }
     
+    static func loadUserPosts_stu(school: String, userId: String, onSuccess: @escaping(_ posts: [postModel]) -> Void) {
+        PostService.timelineUserId(school: school, userId: userId).collection("timeline").getDocuments {
+            (snapshot, error) in
+            
+            guard let snap = snapshot else {
+                print("Error")
+                return
+            }
+            
+            var posts = [postModel]()
+            
+            for doc in snap.documents {
+                let dict = doc.data()
+                guard let decoder = try? postModel.init(fromDictionary: dict) else {return}
+                
+                posts.append(decoder)
+            }
+            onSuccess(posts)
+        }
+    }
     
-    static func loadUserPosts(school: String, motherBoard: String, board: String, userId: String, onSuccess: @escaping(_ posts: [postModel]) -> Void) {
+    static func loadUserPosts_smbu(school: String, motherBoard: String, board: String, userId: String, onSuccess: @escaping(_ posts: [postModel]) -> Void) {
         PostService.PostsUserId(school: school, motherBoard: motherBoard, board: board, userId: userId).collection("posts").getDocuments {
             (snapshot, error) in
             
@@ -229,5 +249,4 @@ class PostService {
     }
     
 //    static func getAllSchool(onSuccess: @escaping(_ school: [schoolModel]) -> Void) { }
-}
 }

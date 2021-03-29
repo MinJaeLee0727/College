@@ -8,10 +8,13 @@
 import Foundation
 import FirebaseFirestore
 
-//struct schoolModel: Encodable, Decodable {
-//
-//    var name: String
-//    
-//    var count: String // number of students
-//    var majors: [String]    
-//}
+struct schoolModel: Encodable, Decodable {
+
+    var name: String
+    var schoolIndex: Int
+    var domain: String
+    
+    var number_of_students: Int
+//    var majors: [String]
+
+}

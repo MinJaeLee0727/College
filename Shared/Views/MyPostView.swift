@@ -11,21 +11,21 @@ import FirebaseAuth
 struct MyPostView: View {
     
     @EnvironmentObject var session: SessionStore
-    @StateObject var profileService = ProfileService()
+    @StateObject var loadPostsService = LoadPostsService()
     
     var body: some View {
         ScrollView {
             VStack {
-                ForEach(self.profileService.posts, id:\.postId) {
+                ForEach(self.loadPostsService.posts, id:\.postId) {
                     (post) in
                     
-                    
+                    PostCardView(post: post)
                 }
             }
             
         }
         .onAppear{
-            self.profileService.loadUserPosts(school: session.session!.school, userId: Auth.auth().currentUser!.uid)
+            self.loadPostsService.loadUserPosts(school: session.session!.school, userId: Auth.auth().currentUser!.uid)
         }
     }
 }

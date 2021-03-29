@@ -15,10 +15,18 @@
 		535D77602611026D008E8BC7 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D775E2611026D008E8BC7 /* PostView.swift */; };
 		535D776A26110799008E8BC7 /* MyPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D776926110799008E8BC7 /* MyPostView.swift */; };
 		535D776B26110799008E8BC7 /* MyPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D776926110799008E8BC7 /* MyPostView.swift */; };
-		535D77752611093B008E8BC7 /* ProfileSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D77742611093B008E8BC7 /* ProfileSevice.swift */; };
-		535D77762611093B008E8BC7 /* ProfileSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D77742611093B008E8BC7 /* ProfileSevice.swift */; };
+		535D77752611093B008E8BC7 /* LoadPostsSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D77742611093B008E8BC7 /* LoadPostsSevice.swift */; };
+		535D77762611093B008E8BC7 /* LoadPostsSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D77742611093B008E8BC7 /* LoadPostsSevice.swift */; };
 		535D777C26110B1F008E8BC7 /* schoolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D777B26110B1F008E8BC7 /* schoolModel.swift */; };
 		535D777D26110B1F008E8BC7 /* schoolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D777B26110B1F008E8BC7 /* schoolModel.swift */; };
+		535D77DD2611264A008E8BC7 /* LoadMotherBoardsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D77DC26112649008E8BC7 /* LoadMotherBoardsService.swift */; };
+		535D77DE2611264A008E8BC7 /* LoadMotherBoardsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D77DC26112649008E8BC7 /* LoadMotherBoardsService.swift */; };
+		535D77F426112D70008E8BC7 /* LoadBoardsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D77F326112D70008E8BC7 /* LoadBoardsService.swift */; };
+		535D77F526112D70008E8BC7 /* LoadBoardsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D77F326112D70008E8BC7 /* LoadBoardsService.swift */; };
+		535D783B26123D2D008E8BC7 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D783A26123D2D008E8BC7 /* AdminView.swift */; };
+		535D783C26123D2D008E8BC7 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D783A26123D2D008E8BC7 /* AdminView.swift */; };
+		535D784226124508008E8BC7 /* AdminService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D784126124508008E8BC7 /* AdminService.swift */; };
+		535D784326124508008E8BC7 /* AdminService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D784126124508008E8BC7 /* AdminService.swift */; };
 		5360F16F2606739F0038B8D2 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5360F16E2606739F0038B8D2 /* NotificationsView.swift */; };
 		5360F1702606739F0038B8D2 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5360F16E2606739F0038B8D2 /* NotificationsView.swift */; };
 		5360F182260677CF0038B8D2 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5360F181260677CF0038B8D2 /* PostService.swift */; };
@@ -96,8 +104,12 @@
 		535D7738260FF116008E8BC7 /* PostCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardService.swift; sourceTree = "<group>"; };
 		535D775E2611026D008E8BC7 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		535D776926110799008E8BC7 /* MyPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostView.swift; sourceTree = "<group>"; };
-		535D77742611093B008E8BC7 /* ProfileSevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSevice.swift; sourceTree = "<group>"; };
+		535D77742611093B008E8BC7 /* LoadPostsSevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPostsSevice.swift; sourceTree = "<group>"; };
 		535D777B26110B1F008E8BC7 /* schoolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = schoolModel.swift; sourceTree = "<group>"; };
+		535D77DC26112649008E8BC7 /* LoadMotherBoardsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMotherBoardsService.swift; sourceTree = "<group>"; };
+		535D77F326112D70008E8BC7 /* LoadBoardsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBoardsService.swift; sourceTree = "<group>"; };
+		535D783A26123D2D008E8BC7 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
+		535D784126124508008E8BC7 /* AdminService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminService.swift; sourceTree = "<group>"; };
 		5360F16E2606739F0038B8D2 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		5360F181260677CF0038B8D2 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		5360F18C26067CA50038B8D2 /* UploadPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPost.swift; sourceTree = "<group>"; };
@@ -267,15 +279,16 @@
 				536A0FD125E142ED0014FD36 /* MainView.swift */,
 				536A0F5B25E1288C0014FD36 /* HomeView.swift */,
 				53F9680E260405610064904F /* ProfileView.swift */,
-				5360F18C26067CA50038B8D2 /* UploadPost.swift */,
 				536A0F6225E128960014FD36 /* BoardMainView.swift */,
 				5383605D260B37F400EEDA3C /* BoardView.swift */,
 				535D775E2611026D008E8BC7 /* PostView.swift */,
+				5360F18C26067CA50038B8D2 /* UploadPost.swift */,
 				535D776926110799008E8BC7 /* MyPostView.swift */,
 				5360F16E2606739F0038B8D2 /* NotificationsView.swift */,
 				53C856AA25E224AA008EF8BB /* LoginView.swift */,
 				53C8565B25E16C88008EF8BB /* Register.swift */,
 				53CFB50F25ED772F009EADB1 /* LoadingView.swift */,
+				535D783A26123D2D008E8BC7 /* AdminView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -305,11 +318,14 @@
 			isa = PBXGroup;
 			children = (
 				53CFB52E25F01CBA009EADB1 /* AuthService.swift */,
+				535D784126124508008E8BC7 /* AdminService.swift */,
 				5360F181260677CF0038B8D2 /* PostService.swift */,
 				535D7738260FF116008E8BC7 /* PostCardService.swift */,
 				53CFB53D25F01CCE009EADB1 /* StorageService.swift */,
 				5358BCA325F0357100F203BC /* SessionStore.swift */,
-				535D77742611093B008E8BC7 /* ProfileSevice.swift */,
+				535D77DC26112649008E8BC7 /* LoadMotherBoardsService.swift */,
+				535D77F326112D70008E8BC7 /* LoadBoardsService.swift */,
+				535D77742611093B008E8BC7 /* LoadPostsSevice.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -549,21 +565,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				535D77F426112D70008E8BC7 /* LoadBoardsService.swift in Sources */,
 				53C8565C25E16C88008EF8BB /* Register.swift in Sources */,
 				536A0FD225E142ED0014FD36 /* MainView.swift in Sources */,
 				53F9681A26040A770064904F /* postModel.swift in Sources */,
 				5383605E260B37F400EEDA3C /* BoardView.swift in Sources */,
 				5360F19C26068FC80038B8D2 /* ImagePicker.swift in Sources */,
 				53C856B225E25274008EF8BB /* Constant.swift in Sources */,
+				535D784226124508008E8BC7 /* AdminService.swift in Sources */,
 				53CFB51025ED772F009EADB1 /* LoadingView.swift in Sources */,
-				535D77752611093B008E8BC7 /* ProfileSevice.swift in Sources */,
+				535D77752611093B008E8BC7 /* LoadPostsSevice.swift in Sources */,
 				536A0F5C25E1288C0014FD36 /* HomeView.swift in Sources */,
 				535D775F2611026D008E8BC7 /* PostView.swift in Sources */,
 				536A0F3A25E122720014FD36 /* ContentView.swift in Sources */,
 				536A0F6325E128960014FD36 /* BoardMainView.swift in Sources */,
 				53F9680F260405610064904F /* ProfileView.swift in Sources */,
 				535D777C26110B1F008E8BC7 /* schoolModel.swift in Sources */,
+				535D77DD2611264A008E8BC7 /* LoadMotherBoardsService.swift in Sources */,
 				5360F18D26067CA50038B8D2 /* UploadPost.swift in Sources */,
+				535D783B26123D2D008E8BC7 /* AdminView.swift in Sources */,
 				53C862AB2609DD1300ECFCC2 /* boardModel.swift in Sources */,
 				535D7739260FF116008E8BC7 /* PostCardService.swift in Sources */,
 				53CFB52725F01A3F009EADB1 /* Extensions.swift in Sources */,
@@ -584,21 +604,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				535D77F526112D70008E8BC7 /* LoadBoardsService.swift in Sources */,
 				53C8565D25E16C88008EF8BB /* Register.swift in Sources */,
 				536A0FD325E142ED0014FD36 /* MainView.swift in Sources */,
 				53F9681B26040A770064904F /* postModel.swift in Sources */,
 				5383605F260B37F400EEDA3C /* BoardView.swift in Sources */,
 				5360F19D26068FC80038B8D2 /* ImagePicker.swift in Sources */,
 				53C856B325E25274008EF8BB /* Constant.swift in Sources */,
+				535D784326124508008E8BC7 /* AdminService.swift in Sources */,
 				53CFB51125ED772F009EADB1 /* LoadingView.swift in Sources */,
-				535D77762611093B008E8BC7 /* ProfileSevice.swift in Sources */,
+				535D77762611093B008E8BC7 /* LoadPostsSevice.swift in Sources */,
 				536A0F5D25E1288C0014FD36 /* HomeView.swift in Sources */,
 				535D77602611026D008E8BC7 /* PostView.swift in Sources */,
 				536A0F3B25E122720014FD36 /* ContentView.swift in Sources */,
 				536A0F6425E128960014FD36 /* BoardMainView.swift in Sources */,
 				53F96810260405610064904F /* ProfileView.swift in Sources */,
 				535D777D26110B1F008E8BC7 /* schoolModel.swift in Sources */,
+				535D77DE2611264A008E8BC7 /* LoadMotherBoardsService.swift in Sources */,
 				5360F18E26067CA50038B8D2 /* UploadPost.swift in Sources */,
+				535D783C26123D2D008E8BC7 /* AdminView.swift in Sources */,
 				53C862AC2609DD1300ECFCC2 /* boardModel.swift in Sources */,
 				535D773A260FF116008E8BC7 /* PostCardService.swift in Sources */,
 				53CFB52825F01A3F009EADB1 /* Extensions.swift in Sources */,

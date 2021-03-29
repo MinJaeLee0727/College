@@ -17,9 +17,11 @@ struct ProfileView: View {
                 Text("Log Out")
             }
             
-            Text(session.session!.school)
-            
-            Text(session.session!.email)
+            if (session.session != nil) {
+                Text(session.session!.school)
+                
+                Text(session.session!.email)
+            }
         }
     }
 }

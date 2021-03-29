@@ -15,7 +15,7 @@ class AuthService {
     static var storeRoot = Firestore.firestore()
     
     static func getUserId(userId: String) -> DocumentReference {
-        return storeRoot.collection("users").document(userId)
+        return storeRoot.collection("allUsers").document(userId)
     }
     
     static func getUserIdInSchool(school: String, userId: String) -> DocumentReference {
@@ -45,6 +45,7 @@ class AuthService {
                 let firestoreUserId = getUserId(userId: userId)
                 let firestoreUserIdInSchool = getUserIdInSchool(school: school, userId: userId)
                 let user = User.init(uid: userId, email: email, school: school, schoolIndex: schoolIndex)
+                let schoolDocRef = storeRoot.collection("Universities").document(school)
                 
                 guard let dict = try?user.asDictionary() else {return}
                 
@@ -62,7 +63,27 @@ class AuthService {
                             return
                         }
                         
-                        onSuccess(user)
+                        schoolDocRef.getDocument {
+                            (document, err) in
+                            
+                            if let dict = document?.data() {
+                                guard let decodedSchool = try? schoolModel.init(fromDictionary: dict) else {return}
+                                
+                                let current_number_of_students = decodedSchool.number_of_students + 1
+                                
+                                schoolDocRef.setData(["number_of_student": current_number_of_students]) {
+                                    (err) in
+                                    
+                                    if err != nil {
+                                        onError(err!.localizedDescription)
+                                        return
+                                    }
+                                    
+                                    onSuccess(user)
+                                }
+                            }
+                        }
+                        
                     }
                 }
                 

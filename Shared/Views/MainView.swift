@@ -25,9 +25,9 @@ struct MainView: View {
                 Image(systemName: "newspaper")
             }).tag(1)
             
-            UploadPost().tabItem({
-                Image(systemName: "plus")
-            }).tag(2)
+            AdminView().tabItem({
+                Image(systemName: "hand.raised.slash")
+            }).tag(4)
             
             NotificationsView().tabItem( {
                 Image(systemName: "bell")

@@ -11,7 +11,8 @@ import FirebaseFirestore
 struct motherBoardModel: Encodable, Decodable {
 
     var name: String
-    
+    var subtitle: String
+
     var school: String
     
     var priority: Int

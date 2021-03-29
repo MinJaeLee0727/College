@@ -7,17 +7,35 @@
 
 import SwiftUI
 
-//struct myPostsBoard: View {
-//    var body: some View {
-//        PostService.loadUserPosts(school: <#T##String#>, motherBoard: <#T##String#>, board: <#T##String#>, userId: <#T##String#>, onSuccess: <#T##([PostModel]) -> Void#>)
-//    }
-//}
+struct BoardView: View {
+    @State var schoolName: String
+    @State var motherBoard: motherBoardModel
+    @State var board: boardModel
+    
+    @StateObject var loadPostsService = LoadPostsService()
 
-struct Board: View {
     var body: some View {
-//        PostPreview(post: <#PostModel#>)
-        Divider()
-            .padding(4)
+        
+        NavigationView {
+            
+            ScrollView {
+                VStack {
+                    ForEach(self.loadPostsService.posts, id: \.postId) {
+                        (post) in
+                        
+                        PostPreview(post: post)
+                        Divider()
+                            .padding(4)
+                    }
+                }
+            }
+            .onAppear {
+                self.loadPostsService.loadPosts_board(school: schoolName, motherBoard: motherBoard.name, board: board.name)
+            }
+        }
+        .navigationTitle("\(board.name)")
+        .navigationBarTitleDisplayMode(.inline)
+        
     }
 }
 
@@ -25,7 +43,7 @@ struct PostPreview: View {
     var post: postModel
     
     var body: some View {
-        NavigationView() {
+        NavigationView{
             VStack {
                 HStack {
                     Text(post.title)
@@ -57,13 +75,8 @@ struct PostPreview: View {
     }
 }
 
-struct Post: View {
-    var body: some View {
-        Text("")
-    }
-}
-struct Board_Previews: PreviewProvider {
-    static var previews: some View {
-        Board()
-    }
-}
+//struct BoardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BoardView(schoolName: <#String#>, motherBoard: <#motherBoardModel#>, board: <#boardModel#>)
+//    }
+//}

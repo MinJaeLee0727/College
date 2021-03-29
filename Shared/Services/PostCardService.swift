@@ -52,14 +52,18 @@ class PostCardService: ObservableObject {
     func undo() {
         if isLiked {
             post.likeCount -= 1
+            PostService.PostsUserId(school: post.school, motherBoard: post.motherBoard, board: post.board, userId: post.posterId).collection("posts").document(post.posterId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 0])
+            
+            PostService.allPosts(school: post.school).document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 0])
+            
+            PostService.timelineUserId(school: post.school, userId: post.posterId).collection("timeline").document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 0])
         } else if isDisLiked {
             post.likeCount += 1
+            PostService.PostsUserId(school: post.school, motherBoard: post.motherBoard, board: post.board, userId: post.posterId).collection("posts").document(post.posterId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 0])
+            
+            PostService.allPosts(school: post.school).document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 0])
+            
+            PostService.timelineUserId(school: post.school, userId: post.posterId).collection("timeline").document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 0])
         }
-        
-        PostService.PostsUserId(school: post.school, motherBoard: post.motherBoard, board: post.board, userId: post.posterId).collection("posts").document(post.posterId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 0])
-        
-        PostService.allPosts(school: post.school).document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 0])
-        
-        PostService.timelineUserId(school: post.school, userId: post.posterId).collection("timeline").document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 0])
     }
 }

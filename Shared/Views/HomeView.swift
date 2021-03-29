@@ -13,7 +13,11 @@ struct HomeView: View {
     @EnvironmentObject var session: SessionStore
     
     var body: some View {
-        NavigationView {
+        
+        if (session.session == nil) { Text("") }
+
+        else {
+            NavigationView {
             VStack {
                 HStack {
                     VStack(alignment: .leading) {
@@ -50,14 +54,14 @@ struct HomeView: View {
                     
                 }
                 .frame(height: UIScreen.main.bounds.height * 0.1)
-
+                
                 Spacer()
             }
             .padding([.leading, .trailing])
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarHidden(true)
         }
-
+        }
         
     }
 }
