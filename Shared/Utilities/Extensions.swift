@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension Encodable {
     func asDictionary() throws -> [String: Any] {
@@ -36,6 +37,7 @@ extension String {
             let prefixIndex = index + 1
             let substringPrefix =
                 String(trimmed.prefix(prefixIndex)).lowercased()
+
             stringArray.append(substringPrefix)
         }
         
@@ -52,5 +54,37 @@ extension Date {
         formatter.zeroFormattingBehavior = .dropAll
         formatter.maximumUnitCount = 1
         return String(format: formatter.string(from: self, to: Date()) ?? "", locale: .current)
+    }
+}
+
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
+
+extension UIApplication {
+    func endEditing(_ force: Bool) {
+        self.windows
+            .filter{$0.isKeyWindow}
+            .first?
+            .endEditing(force)
+    }
+}
+
+struct ResignKeyboardOnDragGesture: ViewModifier {
+    var gesture = DragGesture().onChanged{_ in
+        UIApplication.shared.endEditing(true)
+    }
+    func body(content: Content) -> some View {
+        content.gesture(gesture)
+    }
+}
+
+extension View {
+    func resignKeyboardOnDragGesture() -> some View {
+        return modifier(ResignKeyboardOnDragGesture())
     }
 }

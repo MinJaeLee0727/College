@@ -14,15 +14,52 @@ import FirebaseFirestore
 class AuthService {
     static var storeRoot = Firestore.firestore()
     
-    static func getUserId(userId: String) -> DocumentReference {
-        return storeRoot.collection("allUsers").document(userId)
+//    static func getVerifiedUser_s(university: String, userId: String) -> DocumentReference {
+//        return storeRoot.collection("users").document(university).collection("users").document(userId)
+//    }
+//
+//    static func getVerifiedUser(userId: String, onSuccess: @escaping(_ user: UserModel) -> Void, onError: @escaping(_ errorMesssage: String) -> Void) {
+//
+//        var user: UserModel
+//
+//        storeRoot.collectionGroup("users").whereField("uid", isEqualTo: userId).getDocuments {
+//            (snapshot, error) in
+//
+//            if error != nil {
+//                onError(error!.localizedDescription)
+//                return
+//            }
+//
+//            guard let snap = snapshot else {
+//                onError("There is no user")
+//                return
+//            }
+//
+//            if snap.documents.count > 1 {
+//                print("UID duplicate")
+//                return
+//            }
+//
+//            for doc in snap.documents {
+//                let dict = doc.data()
+//                guard let decoder = try? UserModel.init(fromDictionary: dict) else {return}
+//
+//                user = decoder
+//            }
+//
+//            onSuccess(user)
+//        }
+//    }
+//
+//    static func getNonVerifiedUser(userId: String) -> DocumentReference {
+//        return storeRoot.collection("non-verified users").document(userId)
+//    }
+    
+    static func getUser(userId: String) -> DocumentReference {
+        return storeRoot.collection("users").document(userId)
     }
     
-    static func getUserIdInSchool(school: String, userId: String) -> DocumentReference {
-        return storeRoot.collection("Universities").document(school).collection("users").document(userId)
-    }
-    
-    static func signUp(email: String, school: String, schoolIndex: Int, password: String, onSuccess: @escaping (_ user: User) -> Void, onError: @escaping (_ errorMessage: String) -> Void) {
+    static func signUp(firstName: String, lastName: String, nickName: String, verified: Bool, major: String, year: Int, email: String, userType: Int, university: String, universityIndex: Int, branchSchool: String, password: String, onSuccess: @escaping (_ user: UserModel) -> Void, onError: @escaping (_ errorMessage: String) -> Void) {
         
         Auth.auth().createUser(withEmail: email, password: password) {
             (authResult, error) in
@@ -31,7 +68,7 @@ class AuthService {
                 onError(error!.localizedDescription)
                 return
             }
-                        
+            
             // sending Verification Link ...
             authResult?.user.sendEmailVerification(completion: { (err) in
                 
@@ -42,57 +79,42 @@ class AuthService {
                 
                 guard let userId = authResult?.user.uid else {return}
                 
-                let firestoreUserId = getUserId(userId: userId)
-                let firestoreUserIdInSchool = getUserIdInSchool(school: school, userId: userId)
-                let user = User.init(uid: userId, email: email, school: school, schoolIndex: schoolIndex)
-                let schoolDocRef = storeRoot.collection("Universities").document(school)
+                let userDoc = getUser(userId: userId)
                 
+                let user = UserModel.init(uid: userId, firstName: firstName, lastName: lastName, nickName: nickName, verified: verified, school: university, branchSchool: branchSchool, schoolIndex: universityIndex, major: major, year: year, email: email, userType: userType, likedBoards: [])
+                                
                 guard let dict = try?user.asDictionary() else {return}
                 
-                firestoreUserId.setData(dict) {
+                userDoc.setData(dict) {
                     (error) in
                     if error != nil {
                         onError(error!.localizedDescription)
                         return
                     }
                     
-                    firestoreUserIdInSchool.setData(dict) {
-                        (error) in
-                        if error != nil {
-                            onError(error!.localizedDescription)
-                            return
-                        }
+                    if verified {
+                        let schoolDocRef = storeRoot.collection("universities").document(university)
                         
-                        schoolDocRef.getDocument {
-                            (document, err) in
-                            
-                            if let dict = document?.data() {
-                                guard let decodedSchool = try? schoolModel.init(fromDictionary: dict) else {return}
-                                
-                                let current_number_of_students = decodedSchool.number_of_students + 1
-                                
-                                schoolDocRef.setData(["number_of_student": current_number_of_students]) {
-                                    (err) in
-                                    
-                                    if err != nil {
-                                        onError(err!.localizedDescription)
-                                        return
-                                    }
-                                    
-                                    onSuccess(user)
-                                }
-                            }
+                        if userType == 0 {
+                            schoolDocRef.updateData(["number_of_undergraduate_students": FieldValue.increment(Int64(1))])
+                        } else if userType == 1 {
+                            schoolDocRef.updateData(["number_of_graduate_students": FieldValue.increment(Int64(1))])
+                        } else if userType == 2 {
+                            schoolDocRef.updateData(["number_of_phd_students": FieldValue.increment(Int64(1))])
+                        } else if userType == 3 {
+                            schoolDocRef.updateData(["number_of_staff": FieldValue.increment(Int64(1))])
                         }
-                        
                     }
+                    
+                    onSuccess(user)
+                    
                 }
-                
             })
             
         }
     }
     
-    static func signIn(email: String, password: String, onSuccess: @escaping (_ user: User) -> Void, onError: @escaping (_ errorMessage: String) -> Void) {
+    static func signIn(email: String, password: String, onSuccess: @escaping (_ user: UserModel) -> Void, onError: @escaping (_ errorMessage: String) -> Void) {
         
         Auth.auth().signIn(withEmail: email, password: password) {
             (authResult, error) in
@@ -104,24 +126,30 @@ class AuthService {
             
             guard let userId = authResult?.user.uid else {return}
             
-            if ((authResult?.user.isEmailVerified) != nil) {
-                
-                let firestoreUserId = getUserId(userId: userId)
-                
-                firestoreUserId.getDocument {
-                    (document, error) in
-                    if let dict = document?.data() {
-                        guard let decodedUser = try? User.init(fromDictionary: dict) else {return}
+            if (authResult?.user.isEmailVerified != nil) {
+                if (authResult?.user.isEmailVerified == true) {
+                    
+                    getUser(userId: userId).getDocument {
+                        (document, error) in
                         
-                        onSuccess(decodedUser)
+                        if error != nil {
+                            onError(error!.localizedDescription)
+                            return
+                        }
+                        
+                        if let dict = document?.data() {
+                            guard let decodedUser = try? UserModel.init(fromDictionary: dict) else {
+                                print("CANNOT DECODE")
+                                return
+                            }
+                            
+                            onSuccess(decodedUser)
+                        } else {
+                            onError("Something Wrong")
+                        }
                     }
                 }
-                
-            } else {
-                onError(error!.localizedDescription)
-                return
             }
-            
         }
     }
 }

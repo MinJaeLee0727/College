@@ -9,61 +9,64 @@ import Foundation
 import Firebase
 import SwiftUI
 
-class PostCardService: ObservableObject {
+class PostService: ObservableObject {
     
     @Published var post: postModel!
     @Published var isLiked = false
     @Published var isDisLiked = false
-    
+
     func hasLikedPost() {
-        if post.likes["\(Auth.auth().currentUser!.uid)"] == 1 {
+        
+        if post.likes["\(Auth.auth().currentUser?.uid ?? "ERROR")"] == 1 {
             isLiked = true
-        } else if post.likes["\(Auth.auth().currentUser!.uid)"] == -1 {
+            isDisLiked = false
+        } else if post.likes["\(Auth.auth().currentUser?.uid ?? "ERROR")"] == -1 {
             isDisLiked = true
+            isLiked = false
+        } else {
+            isDisLiked = false
+            isLiked = false
         }
     }
     
     // func hasSavedPost() {}
     
-    
-    
-    func like() {
-        post.likeCount += 1
+    func like() {        
         isLiked = true
-        
-        PostService.PostsUserId(school: post.school, motherBoard: post.motherBoard, board: post.board, userId: post.posterId).collection("posts").document(post.posterId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 1])
-        
-        PostService.allPosts(school: post.school).document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 1])
-        
-        PostService.timelineUserId(school: post.school, userId: post.posterId).collection("timeline").document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 1])
+        isDisLiked = false
+        post.likeCount += 1
+        DataBaseService.posts_sb(university: post.university, board: post.board).document(post.postId).updateData(["likeCount": post.likeCount, "likes.\(Auth.auth().currentUser?.uid ?? "ERROR")": 1])
     }
     
     func dislike() {
-        post.likeCount -= 1
-        isLiked = true
+        isLiked = false
+        isDisLiked = true
+        post.dislikeCount += 1
         
-        PostService.PostsUserId(school: post.school, motherBoard: post.motherBoard, board: post.board, userId: post.posterId).collection("posts").document(post.posterId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": -1])
-        
-        PostService.allPosts(school: post.school).document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": -1])
-        
-        PostService.timelineUserId(school: post.school, userId: post.posterId).collection("timeline").document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": -1])
+        DataBaseService.posts_sb(university: post.university, board: post.board).document(post.postId).updateData(["dislikeCount": post.dislikeCount, "likes.\(Auth.auth().currentUser?.uid ?? "ERROR")": -1])
     }
     
     func undo() {
-        if isLiked {
+        if isLiked && !isDisLiked {
+            isLiked = false
+            isDisLiked = false
             post.likeCount -= 1
-            PostService.PostsUserId(school: post.school, motherBoard: post.motherBoard, board: post.board, userId: post.posterId).collection("posts").document(post.posterId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 0])
             
-            PostService.allPosts(school: post.school).document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 0])
-            
-            PostService.timelineUserId(school: post.school, userId: post.posterId).collection("timeline").document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 0])
-        } else if isDisLiked {
-            post.likeCount += 1
-            PostService.PostsUserId(school: post.school, motherBoard: post.motherBoard, board: post.board, userId: post.posterId).collection("posts").document(post.posterId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 0])
-            
-            PostService.allPosts(school: post.school).document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 0])
-            
-            PostService.timelineUserId(school: post.school, userId: post.posterId).collection("timeline").document(post.postId).updateData(["likeCount": post.likeCount, "\(Auth.auth().currentUser!.uid)": 0])
+            DataBaseService.posts_sb(university: post.university, board: post.board).document(post.postId).updateData(["likeCount":  post.likeCount, "likes.\(Auth.auth().currentUser?.uid ?? "ERROR")": 0])
+        } else if isDisLiked && !isLiked {
+            isLiked = false
+            isDisLiked = false
+            post.dislikeCount -= 1
+            DataBaseService.posts_sb(university: post.university, board: post.board).document(post.postId).updateData(["dislikeCount": post.dislikeCount, "likes.\(Auth.auth().currentUser?.uid ?? "ERROR")": 0])
+        
         }
+    }
+    
+    func remove() {
+        DataBaseService.posts_sb(university: post.university, board: post.board).document(post.postId).updateData(["removed": true])
+    }
+    
+    func report() {
+        DataBaseService.posts_sb(university: post.university, board: post.board).document(post.postId).updateData(["reportCount": FieldValue.increment(Int64(1))])
     }
 }

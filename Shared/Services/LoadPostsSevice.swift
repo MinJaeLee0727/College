@@ -9,37 +9,17 @@ import Foundation
 
 class LoadPostsService: ObservableObject {
     
-    @Published var posts: [postModel] = []
-    
-    func loadUserPosts(school: String, userId: String) {
-        
-//        PostService.getMotherBoards(school: school) {
-//            (motherBoards) in
-//
-//            for motherboard in motherBoards {
-//                PostService.getAllBoardsInMotherBoards(school: school, motherBoard: motherboard.name) {
-//                    (boards) in
-//
-//                    for board in boards {
-//                        PostService.loadUserPosts(school: school, motherBoard: motherboard.name, board: board.name, userId: userId) {
-//                            (loadedPosts) in
-//
-//                            self.posts.append(contentsOf: loadedPosts)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-        
-        PostService.loadUserPosts_stu(school: school, userId: userId) {
+    @Published var posts: [GeneralPostModel] = []
+
+    func loadUserAllPosts(university: String, userId: String) {
+        DataBaseService.loadUser_AllPosts_s(university: university, userId: userId) {
             (posts) in
-            
             self.posts = posts
         }
     }
     
-    func loadPosts_board(school: String, motherBoard: String, board: String) {
-        PostService.loadPostsInBoard(school: school, motherBoard: motherBoard, board: board) {
+    func loadPosts_board(university: String, board: String) {
+        DataBaseService.loadPosts_sb(university: university, board: board) {
             (posts) in
             self.posts = posts
         }

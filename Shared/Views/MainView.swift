@@ -11,7 +11,8 @@ struct MainView: View {
     @State var selected = 0
 
     init() {
-        UITabBar.appearance().backgroundColor = UIColor.black
+        UITabBar.appearance().backgroundColor = UIColor.white
+        
     }
     
     
@@ -25,13 +26,17 @@ struct MainView: View {
                 Image(systemName: "newspaper")
             }).tag(1)
             
-            AdminView().tabItem({
-                Image(systemName: "hand.raised.slash")
-            }).tag(4)
+            PlazaView().tabItem({
+                Image(systemName: "person.3")
+            }).tag(2)
+            
+            TimetableView().tabItem({
+                Image(systemName: "calendar")
+            }).tag(3)
             
             NotificationsView().tabItem( {
                 Image(systemName: "bell")
-            }).tag(3)
+            }).tag(4)
         }
     }
 }

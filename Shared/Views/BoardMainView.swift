@@ -12,42 +12,50 @@ struct BoardMainView: View {
     
     @EnvironmentObject var session: SessionStore
     
-    @StateObject var loadMotherBoardsService = LoadMotherBoardsService()
+    @StateObject var loadMotherBoardsService = LoadBoardService()
+    
+    @State var isConnected = NetworkService.shared.isConnected
     
     var body: some View {
-        if (session.session != nil) {
-            NavigationView {
-                ScrollView(.vertical, showsIndicators: false) {
-                    topBoardCard(user: self.session.session)
-                    
-                    ForEach(self.loadMotherBoardsService.motherBoards, id:\.name) {
-                        (motherBoards) in
+        if (self.session.user_session != nil) {
+            
+            if isConnected {
+                NavigationView {
+                    ScrollView(.vertical, showsIndicators: false) {
+                        topBoardCard(user: self.session.user_session)
                         
-                        motherBoardCard(schoolName: self.session.session!.school, motherBoard: motherBoards)
-                            .padding(.bottom, 5)
+                        ForEach(self.loadMotherBoardsService.motherBoards, id:\.name) {
+                            (motherBoards) in
+                            
+                            motherBoardCard(schoolName: self.session.user_session?.school ?? "ERROR", boards: motherBoards.boards, motherBoard: motherBoards.name, subtitle: motherBoards.subtitle)
+                                .padding(.bottom, 5)
+                        }
+                        
                     }
-                    
+                    .onAppear {
+                        self.loadMotherBoardsService.loadMotherBoards(university: self.session.user_session?.school ?? "ERROR", userId:  Auth.auth().currentUser?.uid ?? "ERROR")
+                    }
+                    .padding()
+                    .navigationTitle(" ")
+                    .navigationBarTitleDisplayMode(.automatic)
+                    .navigationBarHidden(true)
                 }
-                .onAppear {
-                    self.loadMotherBoardsService.loadMotherBoards(school: session.session!.school, userId:  Auth.auth().currentUser!.uid)
-                }
-                .padding()
-                .navigationTitle("")
-                .navigationBarTitleDisplayMode(.automatic)
-                .navigationBarHidden(true)
+                .ignoresSafeArea()
+            } else {
+                Text("Please connect to the Internet")
             }
  
-        } else { Text("") }
+        } else { Text("ERROR") }
     }
 }
 
 struct topBoardCard: View {
-    var user: User?
+    var user: UserModel?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             NavigationLink(
-                destination: MyPostView(),
+                destination: MyPostsView(),
                 label: {
                     HStack {
                         Image(systemName: "doc.fill")
@@ -55,7 +63,7 @@ struct topBoardCard: View {
                             .padding(.trailing, 5)
                         
                         Text("My Posts")
-                            .fontWeight(.light)
+                            .fontWeight(.regular)
                             .foregroundColor(.primary)
                             .lineLimit(1)
                         
@@ -71,7 +79,7 @@ struct topBoardCard: View {
                     .padding(.trailing, 5)
                 
                 Text("My Comments")
-                    .fontWeight(.light)
+                    .fontWeight(.regular)
                     .foregroundColor(.primary)
                     .lineLimit(1)
                 
@@ -86,7 +94,7 @@ struct topBoardCard: View {
                     .padding(.trailing, 5)
                 
                 Text("Saved Post")
-                    .fontWeight(.light)
+                    .fontWeight(.regular)
                     .foregroundColor(.primary)
                     .lineLimit(1)
                 
@@ -105,7 +113,7 @@ struct topBoardCard: View {
                     .padding(.trailing, 5)
                 
                 Text("Hot Boards")
-                    .fontWeight(.light)
+                    .fontWeight(.regular)
                     .foregroundColor(.primary)
                     .lineLimit(1)
                 
@@ -114,20 +122,22 @@ struct topBoardCard: View {
             .padding(.leading)
             .padding(.bottom, 20)
             
-            HStack {
-                Image(systemName: "flame.fill")
-                    .foregroundColor(.orange)
-                    .padding(.trailing, 5)
-                
-                Text("Hot Articles")
-                    .fontWeight(.light)
-                    .foregroundColor(.primary)
-                    .lineLimit(1)
-                
-                Spacer()
-            }
-            .padding(.leading)
-            .padding(.bottom, 20)
+            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                HStack {
+                    Image(systemName: "flame.fill")
+                        .foregroundColor(.orange)
+                        .padding(.trailing, 5)
+                    
+                    Text("Hot Posts")
+                        .fontWeight(.regular)
+                        .foregroundColor(.primary)
+                        .lineLimit(1)
+                    
+                    Spacer()
+                }
+                .padding(.leading)
+                .padding(.bottom, 20)
+            })
             
         }
         .padding(.top, 20)
@@ -141,23 +151,28 @@ struct topBoardCard: View {
 
 struct motherBoardCard: View {
     
-    @StateObject var loadBoardsService = LoadBoardsService()
     @State var schoolName: String
-    @State var motherBoard: motherBoardModel
+    @State var boards: [String]
+    @State var motherBoard: String
+    @State var subtitle: String
     @State var collapse = false
+    
+    func likeBoard() {
+        
+    }
     
     var body: some View {
         VStack(spacing: 0) {
             HStack {
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("\(motherBoard.name)")
+                    Text("\(motherBoard)")
                         .font(.title2)
                         .fontWeight(.regular)
                         .foregroundColor(.primary)
                         .lineLimit(1)
                     
                     if collapse {
-                        Text("\(motherBoard.subtitle)")
+                        Text("\(subtitle)")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -176,18 +191,18 @@ struct motherBoardCard: View {
             if !collapse {
                 VStack(alignment: .leading, spacing: 0) {
                     
-                    ForEach(self.loadBoardsService.boards, id:\.name) {
-                        (boards) in
+                    ForEach(boards, id:\.self) {
+                        (board) in
                         
-                        NavigationLink(destination: BoardView(schoolName: schoolName, motherBoard: motherBoard, board: boards)) {
+                        NavigationLink(destination: BoardView(schoolName: schoolName, motherBoard: motherBoard, board: board)) {
                             HStack {
                                 Button(action: {}) {
-                                    Image(systemName: "star")
+                                    Image(systemName: "bookmark")
                                         .foregroundColor(.secondary)
                                 }
                                 .padding(.trailing, 5)
                                 
-                                Text(boards.name)
+                                Text(board)
                                     .fontWeight(.regular)
                                     .foregroundColor(.primary)
                                     .lineLimit(1)
@@ -201,10 +216,6 @@ struct motherBoardCard: View {
                     }
                     
                 }
-                .onAppear{
-                    self.loadBoardsService.loadBoards(school: schoolName, motherBoard: motherBoard.name, userId:  Auth.auth().currentUser!.uid)
-                }
-                
             }
         }
         .padding(.top, 10)

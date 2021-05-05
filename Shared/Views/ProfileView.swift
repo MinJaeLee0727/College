@@ -17,10 +17,10 @@ struct ProfileView: View {
                 Text("Log Out")
             }
             
-            if (session.session != nil) {
-                Text(session.session!.school)
+            if (session.user_session != nil) {
+                Text(session.user_session?.school ?? "ERROR")
                 
-                Text(session.session!.email)
+                Text(session.user_session?.email ?? "ERROR")
             }
         }
     }

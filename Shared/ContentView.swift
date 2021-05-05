@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @EnvironmentObject var session: SessionStore
-    
+
     func listen() {
-        session.listen()
+        session.user_listen()
     }
     
     var body: some View {
         
         Group {
-            if (session.session != nil) {
+            if (session.user_session != nil) {
                 MainView()
             } else {
                 LoginView()

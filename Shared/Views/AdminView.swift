@@ -12,16 +12,32 @@ struct AdminView: View {
     var body: some View {
         VStack {
             
-//            Button(action: AdminService.buildSchool) {
-//                Text("reset School")
-//            }
-//
-//            Button(action: AdminService.buildDefaultMotherBoards) {
-//                Text("reset MotherBoards")
-//            }
+            Button(action: AdminService.reset, label: {
+                Text("Reset")
+            })
             
-            Button(action: AdminService.buildDefaultBoards) {
-                Text("reset boards")
+            Button(action: AdminService.resetSchool) {
+                Text("reset School")
+            }
+
+            Button(action: AdminService.resetMotherBoards) {
+                Text("reset MotherBoards")
+            }
+            
+            Button(action: AdminService.resetDefaultBoards1) {
+                Text("reset boards1")
+            }
+            
+            Button(action: AdminService.resetDefaultBoards2) {
+                Text("reset boards2")
+            }
+            
+            Button(action: AdminService.resetPosts) {
+                Text("reset posts")
+            }
+            
+            Button(action: AdminService.resetComments) {
+                Text("reset comments")
             }
         }
     }

@@ -75,9 +75,11 @@ struct LoginView: View {
                         TextField("Email", text: $email)
                             .padding(.vertical, 12)
                             .padding(.horizontal)
-                            .background(Color.white)
-                            .border(Color.black)
+                            .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                            .foregroundColor(.black)
+                            .cornerRadius(5.0)
                             .autocapitalization(.none)
+                            .keyboardType(.emailAddress)
                         
                     }
                     .padding(.top)
@@ -86,8 +88,9 @@ struct LoginView: View {
                         SecureField("Password", text: $password)
                             .padding(.vertical, 12)
                             .padding(.horizontal)
-                            .background(Color.white)
-                            .border(Color.black)
+                            .foregroundColor(.black)
+                            .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                            .cornerRadius(5.0)
                         
                     }
                     .padding(.top)
@@ -133,7 +136,7 @@ struct LoginView: View {
                             .cornerRadius(8)
                         })
                     
-                    Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
+                    Spacer(minLength: 0)
                     
                     Button(action: {}, label: {
                         
@@ -160,6 +163,6 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
-            .preferredColorScheme(.dark)
+            
     }
 }
