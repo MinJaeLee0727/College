@@ -13,6 +13,7 @@ import Firebase
 class SessionStore: ObservableObject {
     var didChange = PassthroughSubject<SessionStore, Never>()
     @Published var user_session: UserModel? {didSet{self.didChange.send(self)}}
+    @Published var user_session_loaded = false
     
     var handle: AuthStateDidChangeListenerHandle?
     
@@ -27,11 +28,13 @@ class SessionStore: ObservableObject {
                     if let dict = document?.data() {
                         guard let decodeduser = try? UserModel.init(fromDictionary: dict) else {return}
                         self.user_session = decodeduser
+                        self.user_session_loaded = true
                     }
                 }
             }
             else {
                 self.user_session = nil
+                self.user_session_loaded = true
             }
         })
     }
