@@ -18,7 +18,7 @@ struct LoadingView: View {
                 .opacity(0.8)
             
             ProgressView()
-                .frame(width: 40, height: 40)
+                .frame(width: 30, height: 30)
                 .progressViewStyle(CircularProgressViewStyle(tint:.gray))
                 .scaleEffect(3)
         }
