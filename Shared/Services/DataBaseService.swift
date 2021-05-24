@@ -141,7 +141,7 @@ class DataBaseService {
         }
     }
     
-    static func loadUser_AllPosts_s(university: String, userId: String, onSuccess: @escaping(_ posts: [GeneralPostModel]) -> Void) {
+    static func loadUserPosts_s(university: String, userId: String, onSuccess: @escaping(_ posts: [GeneralPostModel]) -> Void) {
 
         AuthService.storeRoot.collectionGroup("posts").whereField("posterId", isEqualTo: userId).whereField("removed", isEqualTo: false).getDocuments {
             (snapshot, error) in
