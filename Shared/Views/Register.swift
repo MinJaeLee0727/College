@@ -41,7 +41,7 @@ struct RegisterWithSchoolEmail1: View {
     @State private var errorMsg: String = "Something Happened"
     @State private var isLoading = false
     @State private var active: Bool = false
-    @State private var onEditing: Bool = true
+    @State private var onEditing: Bool = false
     
     let color = Color(UIColor(named: "CollegeStudentRepresentColor")!)
     
@@ -50,10 +50,6 @@ struct RegisterWithSchoolEmail1: View {
     func next() {
         self.active = false
         
-        print(self.firstName.isEmpty)
-        print(self.lastName.isEmpty)
-        print(self.nickName.isEmpty)
-
         if self.firstName.isEmpty || self.lastName.isEmpty || self.nickName.isEmpty {
             self.errorMsg = "Please Fill All the Content"
             self.showingAlert = true
@@ -173,10 +169,10 @@ struct RegisterWithSchoolEmail1: View {
                                 
                                 Image(systemName: "arrow.right")
                             }
-                            .simultaneousGesture(TapGesture().onEnded{
-                                next()
-                            })
                         }
+                        .simultaneousGesture(TapGesture().onEnded{
+                            next()
+                        })
                         .alert(isPresented: $showingAlert, content: {
                             Alert(title: Text(alertTitle), message: Text(errorMsg), dismissButton: .default(Text("OK")))
                         })
@@ -194,13 +190,16 @@ struct RegisterWithSchoolEmail1: View {
                     LoadingView()
                 }
             }
-            .navigationBarItems(trailing: Group{
-                if onEditing {
-                    Button(action: hideKeyboard, label: {
-                        Text("Done")
-                    })
-                }
-            })
+//            .navigationBarItems(trailing: Group{
+//                if onEditing {
+//                    Button(action: {
+//                        hideKeyboard()
+//                        onEditing = false
+//                    }, label: {
+//                        Text("Done")
+//                    })
+//                }
+//            })
             .navigationTitle("Information that only we know")
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -309,11 +308,11 @@ struct SchoolEmail2_undergraduate: View {
                     
                     Image(systemName: "arrow.right")
                 }
-                .simultaneousGesture(TapGesture().onEnded{
-                                    next()
-                                })
                 .foregroundColor(.primary)
             }
+            .simultaneousGesture(TapGesture().onEnded{
+                                next()
+                            })
             .alert(isPresented: $showingAlert, content: {
                 Alert(title: Text(alertTitle), message: Text(errorMsg), dismissButton: .default(Text("OK")))
             })
@@ -462,11 +461,11 @@ struct RegisterWithSchoolEmail3: View {
                         
                         Image(systemName: "arrow.right")
                     }
-                    .simultaneousGesture(TapGesture().onEnded{
-                        signUp()
-                    })
                     .foregroundColor(.primary)
                 }
+                .simultaneousGesture(TapGesture().onEnded{
+                    signUp()
+                })
                 .alert(isPresented: $showingAlert, content: {
                     Alert(title: Text(alertTitle), message: Text(errorMsg), dismissButton: .default(Text("OK")))
                 })
