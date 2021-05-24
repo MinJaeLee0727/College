@@ -11,43 +11,23 @@ struct Playground2: View {
     
     @State var outputText: String = ""
     var body: some View {
-        VStack(alignment: .center, spacing: 20) {
-            NavigationView {
-                VStack {
-                    Text("Navigation View")
-                    NavigationLink(destination: Text("Showwing Widget")) {
-                        HStack {
-                            Text("Navigation Link")
-                        }
-                        .frame(width: 300, height: 200)
-                        .border(Color.blue)
-                    }
-                    .border(Color.red)
-                    Spacer()
+        VStack {
+            Spacer()
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    Rectangle()
+                        .frame(width: UIScreen.main.bounds.width, height: 50)
+                        .foregroundColor(.blue)
+                        .offset(x: 0)
+                        
+                    
+                    Rectangle()
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(.red)
                 }
-                .border(Color.yellow)
             }
             
-            Text(outputText)
-                .font(.title)
-                .fontWeight(.bold)
-            
-            Text("My Green Oval")
-                .foregroundColor(.white)
-                .fontWeight(.bold)
-                .font(.title)
-                .frame(width: 300, height: 200)
-                .background(
-                    Ellipse()
-                        .fill(Color.green)
-                )
-            Button(action: {
-                outputText = "Button tapped"
-            }) {
-                Text("Button to Tap")
-            }
-            
-            Text("Just some words...")
             Spacer()
         }
         .highPriorityGesture(DragGesture(minimumDistance: 25, coordinateSpace: .local)
@@ -71,7 +51,9 @@ struct Playground2: View {
     
     func swipeLeftToRight() {
         outputText = "Swiped Left to Right -->"
-    }}
+    }
+    
+}
 
 struct Playground2_Previews: PreviewProvider {
     static var previews: some View {

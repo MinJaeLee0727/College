@@ -64,6 +64,9 @@ struct Playground: View {
 }
 
 struct TodoCard: View {
+    
+    @State var todoData: [Bool: String] = [false: "A1", false: "CS 136"]
+    
     var body: some View {
         VStack {
             HStack {
