@@ -12,7 +12,7 @@ class LoadPostsService: ObservableObject {
     @Published var posts: [GeneralPostModel] = []
 
     func loadUserAllPosts(university: String, userId: String) {
-        DataBaseService.loadUser_AllPosts_s(university: university, userId: userId) {
+        DataBaseService.loadUserPosts_s(university: university, userId: userId) {
             (posts) in
             self.posts = posts
         }
