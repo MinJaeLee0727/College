@@ -71,6 +71,12 @@
 		536A0F7625E1332E0014FD36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 536A0F7425E1332E0014FD36 /* GoogleService-Info.plist */; };
 		536A0FD225E142ED0014FD36 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A0FD125E142ED0014FD36 /* MainView.swift */; };
 		536A0FD325E142ED0014FD36 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A0FD125E142ED0014FD36 /* MainView.swift */; };
+		536DF333264C344600CCB0CF /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DF332264C344600CCB0CF /* Chat.swift */; };
+		536DF334264C344600CCB0CF /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DF332264C344600CCB0CF /* Chat.swift */; };
+		536DF336264C34F100CCB0CF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DF335264C34F100CCB0CF /* Message.swift */; };
+		536DF337264C34F100CCB0CF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DF335264C34F100CCB0CF /* Message.swift */; };
+		536DF339264C355300CCB0CF /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DF338264C355300CCB0CF /* ChatService.swift */; };
+		536DF33A264C355300CCB0CF /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DF338264C355300CCB0CF /* ChatService.swift */; };
 		5383605E260B37F400EEDA3C /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5383605D260B37F400EEDA3C /* BoardView.swift */; };
 		5383605F260B37F400EEDA3C /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5383605D260B37F400EEDA3C /* BoardView.swift */; };
 		5383606D260B403900EEDA3C /* MotherBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5383606C260B403900EEDA3C /* MotherBoardModel.swift */; };
@@ -164,6 +170,9 @@
 		536A0F6225E128960014FD36 /* BoardMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardMainView.swift; sourceTree = "<group>"; };
 		536A0F7425E1332E0014FD36 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		536A0FD125E142ED0014FD36 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		536DF332264C344600CCB0CF /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		536DF335264C34F100CCB0CF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		536DF338264C355300CCB0CF /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		5383605D260B37F400EEDA3C /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		5383606C260B403900EEDA3C /* MotherBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherBoardModel.swift; sourceTree = "<group>"; };
 		53ABE50426339DC5007DEF4E /* PlazaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlazaView.swift; sourceTree = "<group>"; };
@@ -350,6 +359,8 @@
 				53C862AA2609DD1300ECFCC2 /* BoardModel.swift */,
 				53F9681926040A770064904F /* GeneralPostModel.swift */,
 				530A24422614BF82003E84E6 /* CommentModel.swift */,
+				536DF332264C344600CCB0CF /* Chat.swift */,
+				536DF335264C34F100CCB0CF /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -378,6 +389,7 @@
 				535D77742611093B008E8BC7 /* LoadPostsSevice.swift */,
 				535D784126124508008E8BC7 /* AdminService.swift */,
 				5336FC82264165EB00A52F4D /* NetworkService.swift */,
+				536DF338264C355300CCB0CF /* ChatService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -629,11 +641,13 @@
 				530A24382614BE2F003E84E6 /* PostPreviewView.swift in Sources */,
 				535D77752611093B008E8BC7 /* LoadPostsSevice.swift in Sources */,
 				536A0F5C25E1288C0014FD36 /* HomeView.swift in Sources */,
+				536DF336264C34F100CCB0CF /* Message.swift in Sources */,
 				535D775F2611026D008E8BC7 /* PostView.swift in Sources */,
 				530A244E2614BFFB003E84E6 /* CommentService.swift in Sources */,
 				536A0F3A25E122720014FD36 /* ContentView.swift in Sources */,
 				536A0F6325E128960014FD36 /* BoardMainView.swift in Sources */,
 				5336FC80263A59E900A52F4D /* Playground.swift in Sources */,
+				536DF333264C344600CCB0CF /* Chat.swift in Sources */,
 				5336FC7D263A53C900A52F4D /* TimetableView.swift in Sources */,
 				5336FC8A2641AD5300A52F4D /* MyCommentsView.swift in Sources */,
 				53F9680F260405610064904F /* ProfileView.swift in Sources */,
@@ -654,6 +668,7 @@
 				5383606D260B403900EEDA3C /* MotherBoardModel.swift in Sources */,
 				530A24432614BF82003E84E6 /* CommentModel.swift in Sources */,
 				535D776A26110799008E8BC7 /* MyPostsView.swift in Sources */,
+				536DF339264C355300CCB0CF /* ChatService.swift in Sources */,
 				5360F182260677CF0038B8D2 /* DataBaseService.swift in Sources */,
 				53CFB51B25F01966009EADB1 /* UserModel.swift in Sources */,
 				53C856AB25E224AA008EF8BB /* LoginView.swift in Sources */,
@@ -679,11 +694,13 @@
 				530A24392614BE2F003E84E6 /* PostPreviewView.swift in Sources */,
 				535D77762611093B008E8BC7 /* LoadPostsSevice.swift in Sources */,
 				536A0F5D25E1288C0014FD36 /* HomeView.swift in Sources */,
+				536DF337264C34F100CCB0CF /* Message.swift in Sources */,
 				535D77602611026D008E8BC7 /* PostView.swift in Sources */,
 				530A244F2614BFFB003E84E6 /* CommentService.swift in Sources */,
 				536A0F3B25E122720014FD36 /* ContentView.swift in Sources */,
 				536A0F6425E128960014FD36 /* BoardMainView.swift in Sources */,
 				5336FC81263A59E900A52F4D /* Playground.swift in Sources */,
+				536DF334264C344600CCB0CF /* Chat.swift in Sources */,
 				5336FC7E263A53C900A52F4D /* TimetableView.swift in Sources */,
 				5336FC8B2641AD5300A52F4D /* MyCommentsView.swift in Sources */,
 				53F96810260405610064904F /* ProfileView.swift in Sources */,
@@ -704,6 +721,7 @@
 				5383606E260B403900EEDA3C /* MotherBoardModel.swift in Sources */,
 				530A24442614BF82003E84E6 /* CommentModel.swift in Sources */,
 				535D776B26110799008E8BC7 /* MyPostsView.swift in Sources */,
+				536DF33A264C355300CCB0CF /* ChatService.swift in Sources */,
 				5360F183260677CF0038B8D2 /* DataBaseService.swift in Sources */,
 				53CFB51C25F01966009EADB1 /* UserModel.swift in Sources */,
 				53C856AC25E224AA008EF8BB /* LoginView.swift in Sources */,
