@@ -6,8 +6,6 @@ I believe this app could replace Reddit and even bring more convenience.
 
 ## Views and Models
 
----
-
 ### Login / Sign Up
 
 <img align="left" height="60%" width="20%" src="College%20ba9ebaf82234450d8be5d33635811c28/IMG_2899.png">
