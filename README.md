@@ -1,13 +1,5 @@
 # College
 
-Created: Feb 20, 2021
-Framework / Library: Firebase
-Github: https://github.com/MinJaeLee0727/College
-Language: Swift
-Pinned: Yes
-Still on working?: Yes
-Tools: Git, XCode
-
 Anonymous Social Network App for Canadian College Students
 
 I believe this app could replace Reddit and even bring more convenience.
