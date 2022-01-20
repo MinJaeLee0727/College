@@ -2,7 +2,11 @@
 
 Anonymous Social Network App for Canadian College Students
 
-I believe this app could replace Reddit and even bring more convenience.
+Please refer to: 
+* https://github.com/minjaelee0727/college-uw
+* https://incredible-branch-5c3.notion.site/Campus-123cbe0748254e8aa3a0f7a598589089
+
+
 
 ## Views and Models
 
